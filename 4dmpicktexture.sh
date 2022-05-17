@@ -8,7 +8,7 @@ Flags:
   -h  Display this help text
   -l  List folder names'
 
-while getopts ":cdhl" option; do
+while getopts "cdhl" option; do
     case $option in
         c)
             read -rp "Enter new directory: " gamefolder
