@@ -47,6 +47,9 @@ while getopts "cdhl" option; do
 done
 
 read -rp "Enter name of folder: " txtrpack
+# --------------------
+# If Someone's reading this I'm so sorry for this code I wrote
+# --------------------
 if [ -d "$gamefolder/texturepacks/$txtrpack/" ]
 then
     if [ -d "$gamefolder/texturepacks/$txtrpack/audio" ]
