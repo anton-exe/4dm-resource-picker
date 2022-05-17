@@ -15,6 +15,7 @@ while getopts "cdhl" option; do
             echo "$gamefolder" > gamepath
             exit;;
         d)
+            table="Folder | Name | Description | Author"
             for i in "$gamefolder"/texturepacks/*
             do
                 if [ -a "$i"/pack.4dmeta ]
@@ -25,11 +26,12 @@ while getopts "cdhl" option; do
                     if [ -z "$name" ]; then name="Name not specified"; fi
                     if [ -z "$desc" ]; then desc="Description not specified"; fi
                     if [ -z "$autr" ]; then autr="Author not specified"; fi                
-                    echo -e "$(basename "$i") | ${name:5} | ${desc:12} | ${autr:7}"
+                    table=$table"\n""$(basename "$i") | ${name:5} | ${desc:12} | ${autr:7}"
                 else
-                    echo -e "$(basename "$i") | No pack.4dmeta"
+                    table=$table"\n""$(basename "$i") | No pack.4dmeta"
                 fi
             done
+            echo -e "$table" | column -t -s'|' -o'|'
             exit;;
         l)
             ls  -N --format=single-column "$gamefolder/texturepacks/"
